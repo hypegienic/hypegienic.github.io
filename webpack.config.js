@@ -5,10 +5,19 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
   mode: process.env.NODE_ENV,
   devtool: 'eval',
-  entry: process.env.NODE_ENV === 'development'? [
-    'webpack-dev-server/client?',
-    './src/client'
-  ]:['./src/client'],
+  entry: process.env.NODE_ENV === 'development'? {
+    index: [
+      'webpack-dev-server/client?',
+      './src/client'
+    ],
+    404: [
+      'webpack-dev-server/client?',
+      './src/client/404'
+    ]
+  } : {
+    index: ['./src/client'],
+    404: ['./src/client/404']
+  },
   output: {
     path: path.join(__dirname, 'docs'),
     filename: '[name].bundle.js',
@@ -39,7 +48,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/client/index.html'
+      template: 'src/client/index.html',
+      chunks: ['index', '404']
+    }),
+    new HtmlWebpackPlugin({
+      filename: '404.html',
+      template: 'src/client/404.html',
+      chunks: ['404']
     }),
     new CopyWebpackPlugin({
       patterns: [{
