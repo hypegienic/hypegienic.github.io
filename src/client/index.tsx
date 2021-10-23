@@ -1,9 +1,8 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
 import {Theme, ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 
-import store from './store'
+import Provider from './store'
 import Favicon from './components/favicon'
 import Import from './components/import'
 import Router from './components'
@@ -36,7 +35,7 @@ const theme:Theme = createMuiTheme({
 })
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider>
     <ThemeProvider theme={theme}>
       <Favicon/>
       <Import/>
