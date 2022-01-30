@@ -62,11 +62,11 @@ const useStyles = makeStyles((theme:Theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgb(51, 51, 51)',
-    '& $titleLine': {
-      backgroundColor: theme.palette.text.secondary
+    '& $bordered': {
+      borderColor: theme.palette.text.secondary
     },
-    '& $numberLine': {
-      backgroundColor: theme.palette.text.secondary
+    '& $numberLine:after': {
+      borderColor: theme.palette.text.secondary
     }
   },
   link: {
@@ -134,43 +134,69 @@ const useStyles = makeStyles((theme:Theme) => ({
       marginBottom: '6px'
     }
   },
+  bordered: {
+    padding: '16px',
+    borderColor: theme.palette.text.primary,
+    borderWidth: '2px',
+    borderStyle: 'solid'
+  },
   title: {
     lineHeight: 1
   },
   titleLine: {
-    width: '240px',
-    height: '5px',
-    marginBottom: '16px',
-    backgroundColor: theme.palette.primary.main,
+    flex: 1,
+    width: '15px',
+    borderWidth: '2px',
+    borderColor: theme.palette.primary.main,
+    borderStyle: 'solid',
+    marginBottom: '6px',
+    backgroundImage: `repeating-linear-gradient(${[
+      '135deg',
+      'rgba(255, 255, 255, 0)',
+      'rgba(255, 255, 255, 0) 8px',
+      `${theme.palette.primary.main} 8px`,
+      `${theme.palette.primary.main} 10px`
+    ].join(', ')})`,
+    overflow: 'hidden',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      width: '180px',
-      height: '4px',
-      marginBottom: '8px'
+      marginBottom: '4px'
     }
   },
   numberColumn: {
+    display: 'flex',
+    flexDirection: 'column',
     marginTop: '8px',
-    width: '42px',
+    marginBottom: '8px',
+    width: '32px',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
       marginTop: '6px',
-      width: '28px'
+      marginBottom: '6px'
     }
   },
   numberText: {
     fontFamily: 'Exan, Monaco, monospace',
     fontWeight: 600,
-    lineHeight: '1.8rem',
-    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      lineHeight: '1.5rem'
-    }
+    marginBottom: '2px',
   },
   numberLine: {
-    width: '24px',
-    height: '3px',
-    backgroundColor: theme.palette.text.primary,
+    flex: 1,
+    position: 'relative',
+    width: '19px',
+    minHeight: '2px',
+    marginBottom: '6px',
+    overflow: 'hidden',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      width: '20px',
-      height: '2px'
+      marginBottom: '4px'
+    },
+    ['&:after']: {
+      content: '" "',
+      position: 'absolute',
+      top: '0',
+      height: 'calc(100% - 4px)',
+      width: 'calc(100% - 4px)',
+      borderWidth: '2px',
+      borderColor: theme.palette.text.primary,
+      borderStyle: 'solid'
     }
   },
   numberedContent: {
@@ -217,29 +243,70 @@ const LandingPage:React.FunctionComponent = () => {
       </Grid>
       <div className={classes.darkSection}>
         <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
-          <Grid container direction='row' alignItems='flex-start'>
-            <div className={classes.numberColumn}/>
+          <div className={classes.bordered}>
+            <Grid container direction='row' alignItems='stretch'>
+              <div className={classes.numberColumn}>
+                <div className={classes.titleLine}/>
+              </div>
+              <div className={classes.numberedContent}>
+                <Spinner
+                  sentence='GET STARTED'
+                  color='primary'
+                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                  classes={{root:classes.title}}
+                />
+              </div>
+            </Grid>
+            {[
+              'Download the hypegienic app. Register/login the app following the instructions on the screen.',
+              'To deposit an order, open a locker unit through the app.',
+              'You will be notified when your items are ready for pick up.',
+              'Open the locker unit through the app to pick up your order.'
+            ].map((step, index) => 
+              <Grid key={step} container direction='row' alignItems='stretch'>
+                <div className={classes.numberColumn}>
+                  <Typography color='textSecondary'
+                    variant='body1'
+                    classes={{root:classes.numberText}}
+                  >
+                    0{index + 1}
+                  </Typography>
+                  <div className={classes.numberLine}/>
+                </div>
+                <div className={classes.numberedContent}>
+                  <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                    {step}
+                  </Typography>
+                </div>
+              </Grid>
+            )}
+          </div>
+        </Grid>
+      </div>
+      <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
+        <div className={classes.bordered}>
+          <Grid container direction='row' alignItems='stretch'>
+            <div className={classes.numberColumn}>
+              <div className={classes.titleLine}/>
+            </div>
             <div className={classes.numberedContent}>
               <Spinner
-                sentence='GET STARTED'
-                color='textSecondary'
-                variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h4':'h3'}
+                sentence='YOUR SHOES ARE SAFE WITH US'
+                color='primary'
+                variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
                 classes={{root:classes.title}}
               />
-              <div className={classes.titleLine}/>
             </div>
           </Grid>
           {[
-            'Download our hypegienic app from the Apple Store or Google Play Store. With the app, you can interact with any one of our locker by moving closer to it.',
-            'Select the service you required and proceed, a locker unit will be opened for you as indicated in the app.',
-            'Place your shoe in the locker and close it back. Turn on notification to be notified when your shoes are cleaned and placed back into the locker.',
-            'Top up to make sure you have enough money in the app when you want to retrieve your shoes back.',
-            'Repeat the same steps to retrieve your shoes back when they are ready to be picked up.'
+            'Our app can only be authenticated via OTP sent to your registered device.',
+            'The hypelocker can only be unlocked when prompted by your authenticated device.',
+            'You will receive real-time updates on the progress of your order.'
           ].map((step, index) => 
-            <Grid key={step} container direction='row' alignItems='flex-start'>
+            <Grid key={step} container direction='row' alignItems='stretch'>
               <div className={classes.numberColumn}>
-                <Typography color='textSecondary'
-                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}
+                <Typography color='textPrimary'
+                  variant='body1'
                   classes={{root:classes.numberText}}
                 >
                   0{index + 1}
@@ -247,51 +314,13 @@ const LandingPage:React.FunctionComponent = () => {
                 <div className={classes.numberLine}/>
               </div>
               <div className={classes.numberedContent}>
-                <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
                   {step}
                 </Typography>
               </div>
             </Grid>
           )}
-        </Grid>
-      </div>
-      <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
-        <Grid container direction='row' alignItems='flex-start'>
-          <div className={classes.numberColumn}/>
-          <div className={classes.numberedContent}>
-            <Spinner
-              sentence='YOUR SHOES ARE SAFE WITH US'
-              color='primary'
-              variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h4':'h3'}
-              classes={{root:classes.title}}
-            />
-            <div className={classes.titleLine}/>
-          </div>
-        </Grid>
-        {[
-          'Our CCTVs are operating 24/7 with close monitoring.',
-          'Our app can only be authenticated via OTP sent to your registered device.',
-          'Your belongings can only be retrieved by you. The hypelocker can only be unlocked when your signed-in device is within close proximity.',
-          'You will receive real time updates on the progress of your order.',
-          'All hypelockers are enforced with an activated alarm system.'
-        ].map((step, index) => 
-          <Grid key={step} container direction='row' alignItems='flex-start'>
-            <div className={classes.numberColumn}>
-              <Typography color='textPrimary'
-                variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}
-                classes={{root:classes.numberText}}
-              >
-                0{index + 1}
-              </Typography>
-              <div className={classes.numberLine}/>
-            </div>
-            <div className={classes.numberedContent}>
-              <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
-                {step}
-              </Typography>
-            </div>
-          </Grid>
-        )}
+        </div>
       </Grid>
       <div className={classes.darkSection}>
         <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
@@ -303,7 +332,6 @@ const LandingPage:React.FunctionComponent = () => {
               classes={{root:classes.title}}
               align='center'
             />
-            <div className={classes.titleLine}/>
           </div>
           <RubikCube
             variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h4':'h3'}

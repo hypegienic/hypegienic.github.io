@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   storeIcon: {
     width: '180px',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      width: '120px'
+      width: '140px'
     }
   },
   '@keyframes pulsing': {

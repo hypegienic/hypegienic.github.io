@@ -68,10 +68,10 @@ const useStyles = makeStyles((theme:Theme) => ({
     textDecoration: 'none'
   },
   mediaIcon: {
-    height: '28px',
+    height: '24px',
     marginRight: '6px',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      height: '24px',
+      height: '18px',
       marginRight: '4px'
     }
   }
@@ -88,13 +88,13 @@ const Footer:React.FunctionComponent = () => {
       <div className={classes.content}>
         <a className={classes.media} href='https://www.facebook.com/hypeguardianmy/'>
           <img className={classes.mediaIcon} src={FacebookIcon}/>
-          <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}>
+          <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>
             hypeguardianmy
           </Typography>
         </a>
         <a className={classes.media} href='https://www.instagram.com/hypeguardianmy'>
           <img className={classes.mediaIcon} src={InstagramIcon}/>
-          <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}>
+          <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>
             hypeguardianmy
           </Typography>
         </a>

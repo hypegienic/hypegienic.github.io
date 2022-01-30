@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme:Theme) => {
     },
     tagLineText: {
       fontWeight: 800,
-      fontSize: '48px',
+      fontSize: '44px',
       [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
         fontSize: '32px'
       }
@@ -272,8 +272,8 @@ const Header:React.FunctionComponent = () => {
       resolve: () => void
     ) => () => {
       const mapLetters = (letters:Frame[]) => letters.map(letter =>
-        frame >= letter.start && frame < letter.end
-          && (!letter.current || Math.random() < 0.28)
+        frame >= letter.start && frame < letter.end &&
+        (!letter.current || Math.random() < 0.28)
           ? {
               ...letter,
               current: shufflingCharacters[Math.floor(Math.random() * shufflingCharacters.length)]
