@@ -81,7 +81,6 @@ const useStyles = makeStyles((theme:Theme) => ({
   },
   hypeguardianLogo: {
     width: '100px',
-    marginLeft: '16px',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
       width: '80px'
     }
@@ -89,11 +88,11 @@ const useStyles = makeStyles((theme:Theme) => ({
   poweredContainer: {
     position: 'relative',
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     marginTop: '8px',
-    padding: '0 4px',
+    padding: '2px',
     overflow: 'hidden',
-    '&:after,&:before': {
+    '&:after, &:before': {
       content: "''",
       position: 'absolute',
       width: '100%',
@@ -102,25 +101,37 @@ const useStyles = makeStyles((theme:Theme) => ({
       zIndex: -1
     },
     '&:before': {
-      height: '4px',
+      height: '6px',
       bottom: '0',
       transform: 'skew(135deg)',
       transformOrigin: 'top left',
     },
     '&:after': {
-      height: 'calc(100% - 4px)',
+      height: 'calc(100% - 6px)',
       top: '0'
     }
   },
   poweredLabel: {
     fontSize: '11px',
     fontWeight: 800,
+    color: theme.palette.text.primary,
+    backgroundColor: 'rgb(255, 255, 255)',
+    padding: '0 2px',
+    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+      fontSize: '9px'
+    }
+  },
+  hypeguardianLabel: {
+    fontSize: '18px',
+    fontWeight: 800,
     color: 'rgb(255, 255, 255)',
+    padding: '2px 2px 0',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
       fontSize: '9px'
     }
   },
   multiplyLabel: {
+    flex: 1,
     fontSize: '48px'
   },
   centeredTitleContainer: {
@@ -225,17 +236,22 @@ const LandingPage:React.FunctionComponent = () => {
   return (
     <div className={classes.container}>
       <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer}}>
-        <Grid container direction='column' alignItems='flex-end'>
-          <img className={classes.hypegienicLogo} src={HypegienicLogo}/>
-          <Grid container direction='row' justify='flex-end' alignItems='center'>
-            <Typography color='textPrimary' className={classes.multiplyLabel}>×</Typography>
-            <img className={classes.hypeguardianLogo} src={HypeGuardianLogo}/>
+        <Grid container direction='row' justify='flex-end'>
+          <Grid direction='column' alignItems='stretch'>
+            <img className={classes.hypegienicLogo} src={HypegienicLogo}/>
+            <Grid container direction='row' justify='flex-end' alignItems='center'>
+              <Typography color='textPrimary' align='center' className={classes.multiplyLabel}>×</Typography>
+              <img className={classes.hypeguardianLogo} src={HypeGuardianLogo}/>
+            </Grid>
+            <div className={classes.poweredContainer}>
+              <Typography className={classes.poweredLabel}>
+                POWERED BY
+              </Typography>
+              <Typography color='textPrimary' className={classes.hypeguardianLabel}>
+                HYPEGUARDIAN
+              </Typography>
+            </div>
           </Grid>
-          <div className={classes.poweredContainer}>
-            <Typography color='textPrimary' className={classes.poweredLabel}>
-              POWERED BY HYPEGUARDIAN
-            </Typography>
-          </div>
         </Grid>
         <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.headerContent}}>
           <Header/>
