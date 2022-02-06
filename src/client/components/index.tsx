@@ -8,6 +8,15 @@ const landingPage = () => import(/* webpackChunkName:'landing' */ './landing-pag
 const notFoundPage = () => import(/* webpackChunkName:'404-page' */ './404-page')
 
 const Router:React.FunctionComponent = () => {
+  React.useEffect(() => {
+    window['dataLayer'] = window['dataLayer'] || []
+    const gtag = (...argument:any[]) => {
+      window['dataLayer'].push(argument)
+    }
+    gtag('js', new Date())
+    gtag('config', 'UA-219608447-1')
+  }, [])
+
   return (
     <BrowserRouter>
       <Switch>
