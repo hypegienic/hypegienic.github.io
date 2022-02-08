@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {Theme, ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 import Provider from './store'
 import Favicon from './components/favicon'
@@ -36,6 +37,7 @@ const theme:Theme = createMuiTheme({
 
 ReactDOM.render(
   <Provider>
+    <CssBaseline/>
     <ThemeProvider theme={theme}>
       <Favicon/>
       <Import/>

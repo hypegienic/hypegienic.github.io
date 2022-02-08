@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     flexDirection: 'column'
   },
   stripeContainer: {
-    height: '24px',
+    height: '40px',
     padding: '8px 0',
     margin: '0 8px',
     display: 'flex',

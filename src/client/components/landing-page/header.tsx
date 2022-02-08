@@ -36,14 +36,12 @@ const useStyles = makeStyles((theme:Theme) => {
       position: 'absolute',
       height: '100%',
       width: `calc(30% + ${tagLineBorderWidth}px)`,
-      top: `${- tagLineBorderWidth}px`,
-      left: `${- tagLineBorderWidth}px`,
+      top: '0',
+      left: '0',
       borderWidth: [1, 0, 1, 1].map(weight => `${weight * tagLineBorderWidth}px`).join(' '),
       borderStyle: 'solid',
       borderColor: tagLineBorderColor.fore,
       [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-        top: `${- tagLineBorderWidth * 3 / 4}px`,
-        left: `${- tagLineBorderWidth * 3 / 4}px`,
         borderWidth: [1, 0, 1, 1].map(weight => `${weight * tagLineBorderWidth * 3 / 4}px`).join(' ')
       }
     },
@@ -51,13 +49,13 @@ const useStyles = makeStyles((theme:Theme) => {
       position: 'absolute',
       height: '60%',
       width: '70%',
-      bottom: `${- tagLineBorderWidth}px`,
-      right: `${- tagLineBorderWidth}px`,
+      bottom: '0',
+      right: '0',
       overflow: 'hidden',
-      '&:after,&:before': {
+      '&:after, &:before': {
         content: "''",
         position: 'absolute',
-        width: `calc(100% - ${tagLineBorderWidth}px)`,
+        width: `100%`,
         left: '0',
         borderStyle: 'solid',
         borderColor: tagLineBorderColor.fore,
@@ -66,29 +64,23 @@ const useStyles = makeStyles((theme:Theme) => {
       '&:before': {
         height: '16px',
         bottom: '0',
-        borderWidth: [0, 1.3, 1, 0].map(weight => `${weight * tagLineBorderWidth}px`).join(' '),
+        borderWidth: [0, 1, 1, 0].map(weight => `${weight * tagLineBorderWidth}px`).join(' '),
         transform: 'skew(135deg)',
         transformOrigin: 'top left',
       },
       '&:after': {
-        height: `calc(100% - 16px - ${tagLineBorderWidth}px)`,
+        height: `calc(100% - 16px)`,
         top: '0',
         borderWidth: [0, 1, 0, 0].map(weight => `${weight * tagLineBorderWidth}px`).join(' ')
       },
       [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-        bottom: `${- tagLineBorderWidth * 3 / 4}px`,
-        right: `${- tagLineBorderWidth * 3 / 4}px`,
         borderWidth: [0, 1, 1, 0].map(weight => `${weight * tagLineBorderWidth * 3 / 4}px`).join(' '),
-        '&:after,&:before': {
-          width: `calc(100% - ${tagLineBorderWidth * 3 / 4}px)`
-        },
         '&:before': {
           height: '12px',
-          borderWidth: [0, 1.3, 1, 0].map(weight => `${weight * tagLineBorderWidth * 3 / 4}px`).join(' ')
+          borderWidth: [0, 1, 1, 0].map(weight => `${weight * tagLineBorderWidth * 3 / 4}px`).join(' ')
         },
         '&:after': {
-          height: `calc(100% - 12px - ${tagLineBorderWidth * 3 / 4}px)`,
-          top: '0',
+          height: `calc(100% - 12px)`,
           borderWidth: [0, 1, 0, 0].map(weight => `${weight * tagLineBorderWidth * 3 / 4}px`).join(' ')
         }
       }
@@ -125,7 +117,7 @@ const useStyles = makeStyles((theme:Theme) => {
       }
     },
     secondaryTagLineContainer: {
-      width: 'calc(100% - 32px)',
+      width: '100%',
       padding: '2px 16px',
     },
     secondaryTagLineText: {
@@ -138,7 +130,6 @@ const useStyles = makeStyles((theme:Theme) => {
     },
     secondaryTagLineBackground: {
       position: 'relative',
-      padding: '2px 16px',
       overflow: 'hidden',
       '&:after,&:before': {
         content: "''",
@@ -451,7 +442,7 @@ const Header:React.FunctionComponent = () => {
               </Typography>
             </div>
             <div className={classes.secondaryTagLineBackground} style={{
-              height: placeholderHeight.secondary,
+              height: placeholderHeight.secondary + 4,
               transition: 'height 300ms ease-in-out'
             }}/>
           </div>

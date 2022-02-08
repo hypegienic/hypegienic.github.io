@@ -89,8 +89,8 @@ const useStyles = makeStyles((theme:Theme) => ({
   },
   legendBox: {
     position: 'relative',
-    width: '12px',
-    height: '12px',
+    width: '16px',
+    height: '16px',
     border: `2px solid ${theme.palette.text.primary}`,
     margin: '1px 6px',
     overflow: 'hidden',

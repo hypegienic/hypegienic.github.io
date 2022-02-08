@@ -4,6 +4,9 @@ import {Theme} from '@material-ui/core/styles'
 import Typography, {TypographyProps} from '@material-ui/core/Typography'
 
 const useStyles = makeStyles((theme:Theme) => ({
+  text: {
+    overflow: 'hidden'
+  },
   container: {
     display: 'inline-block',
     position: 'relative',
@@ -54,7 +57,10 @@ const Spinner:React.FunctionComponent<SpinnerProps> = (props) => {
   const {locations} = state
   const classes = useStyles({})
   return (
-    <Typography {...typoProps}>
+    <Typography {...typoProps} classes={{
+      ...typoProps.classes,
+      root: [typoProps.classes.root, classes.text].join(' ')
+    }}>
       {words.map((word, index) =>
         <React.Fragment key={word + index}>
           <div className={classes.container}>

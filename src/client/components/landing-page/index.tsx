@@ -15,7 +15,7 @@ import Footer from './footer'
 
 const useStyles = makeStyles((theme:Theme) => ({
   container: {
-    width: '100vw',
+    width: '100%',
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
@@ -156,7 +156,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   },
   titleLine: {
     flex: 1,
-    width: '15px',
+    width: '19px',
     borderWidth: '2px',
     borderColor: theme.palette.primary.main,
     borderStyle: 'solid',
@@ -203,8 +203,8 @@ const useStyles = makeStyles((theme:Theme) => ({
       content: '" "',
       position: 'absolute',
       top: '0',
-      height: 'calc(100% - 4px)',
-      width: 'calc(100% - 4px)',
+      height: '100%',
+      width: '100%',
       borderWidth: '2px',
       borderColor: theme.palette.text.primary,
       borderStyle: 'solid'
@@ -233,6 +233,11 @@ const useStyles = makeStyles((theme:Theme) => ({
 const LandingPage:React.FunctionComponent = () => {
   const [{type:screenType}] = useScreenState()
   const classes = useStyles({})
+
+  React.useEffect(() => {
+    document.body.style.backgroundColor = 'white'
+  }, [])
+
   return (
     <div className={classes.container}>
       <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer}}>

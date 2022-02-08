@@ -148,6 +148,11 @@ const useStyles = makeStyles((theme:Theme) => ({
 const e404page:React.FunctionComponent = () => {
   const [{type:screenType}] = useScreenState()
   const classes = useStyles({})
+
+  React.useEffect(() => {
+    document.body.style.backgroundColor = 'white'
+  }, [])
+
   return (
     <div className={classes.container}>
       <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
