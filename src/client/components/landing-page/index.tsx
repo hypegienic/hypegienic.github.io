@@ -445,7 +445,7 @@ const LandingPage:React.FunctionComponent = () => {
         </div>
       </Grid>
       <div className={classes.footer}>
-        <div className={classes.media}>
+        <a className={classes.media} href='https://www.google.com/maps/place/HypeGuardian/@3.0697401,101.6001784,17z/data=!3m1!4b1!4m5!3m4!1s0x31cc4dbe5360f2c9:0xe0bbcd55f4859d9c!8m2!3d3.0697347!4d101.6023724'>
           <img className={classes.mediaIcon} src={PlaceIcon}/>
           <Typography color='textSecondary'
             variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}
@@ -458,7 +458,7 @@ const LandingPage:React.FunctionComponent = () => {
               'Selangor'
             ].join('\n')
           }</Typography>
-        </div>
+        </a>
         <div className={classes.copyright}>
           <img className={classes.hypegienicLogo} src={HypegienicWhiteLogo}/>
           <Typography variant='caption'
