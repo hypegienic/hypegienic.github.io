@@ -95,8 +95,8 @@ const useStyles = makeStyles((theme:Theme) => ({
     margin: '1px 6px',
     overflow: 'hidden',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      width: '8px',
-      height: '8px',
+      width: '10px',
+      height: '10px',
       borderWidth: '1px'
     }
   },

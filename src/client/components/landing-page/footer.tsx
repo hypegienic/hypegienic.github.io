@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/styles'
 import {Theme} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
+import PhoneIcon from '../../../asset/img/phone.svg'
 import FacebookIcon from '../../../asset/img/facebook.svg'
 import InstagramIcon from '../../../asset/img/instagram.svg'
 import {useScreenState} from '../../store/screen'
@@ -86,6 +87,12 @@ const Footer:React.FunctionComponent = () => {
         <div className={[classes.stripeBackground, classes.flipped].join(' ')}/>
       </div>
       <div className={classes.content}>
+        <a className={classes.media} href='tel:+601110762614'>
+          <img className={classes.mediaIcon} src={PhoneIcon}/>
+          <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>
+           +6011-1076 2614
+          </Typography>
+        </a>
         <a className={classes.media} href='https://www.facebook.com/hypeguardianmy/'>
           <img className={classes.mediaIcon} src={FacebookIcon}/>
           <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>

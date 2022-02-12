@@ -5,7 +5,9 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 
 import HypegienicLogo from '../../../asset/img/hypegienic-logo.svg'
+import HypegienicWhiteLogo from '../../../asset/img/hypegienic-white-logo.svg'
 import HypeGuardianLogo from '../../../asset/img/hypeguardian-logo.svg'
+import PlaceIcon from '../../../asset/img/place.svg'
 import {useScreenState} from '../../store/screen'
 import Header from './header'
 import Spinner from './spinner'
@@ -221,23 +223,88 @@ const useStyles = makeStyles((theme:Theme) => ({
       marginBottom: '6px'
     }
   },
-  footer: {
+  footerBanner: {
     width: '100%',
     marginTop: '32px',
     display: 'flex',
     alignSelf: 'end',
     flexDirection: 'column',
     alignItems: 'center'
+  },
+  footer: {
+    width: '100%',
+    paddingBottom: '12px',
+    display: 'flex',
+    alignSelf: 'end',
+    flexDirection: 'column',
+    alignItems: 'center',
+    backgroundColor: 'rgb(0, 0, 0)',
+    ['& $hypegienicLogo']: {
+      width: '128px',
+      padding: '12px 0',
+      opacity: 0.5,
+      [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+        width: '112px'
+      }
+    },
+  },
+  media: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '2px 16px',
+    textDecoration: 'none'
+  },
+  mediaIcon: {
+    height: '24px',
+    marginBottom: '6px',
+    [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+      height: '18px',
+      marginBottom: '4px'
+    }
+  },
+  mediaText: {
+    textAlign: 'center',
+    whiteSpace: 'pre'
+  },
+  copyright: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '24px 0'
+  },
+  copyrightText: {
+    color: 'rgb(118, 121, 128)'
   }
 }))
 const LandingPage:React.FunctionComponent = () => {
   const [{type:screenType}] = useScreenState()
-  const classes = useStyles({})
+  const downloadSection = React.useRef<HTMLDivElement>()
+  const contactSection = React.useRef<HTMLDivElement>()
 
   React.useEffect(() => {
     document.body.style.backgroundColor = 'white'
   }, [])
 
+  const smoothScrollTo = (element:HTMLElement) => {
+    element.scrollIntoView({behavior:'smooth'})
+  }
+  React.useEffect(() => {
+    if(window.location.hash === '#download') {
+      setTimeout(() =>
+        smoothScrollTo(downloadSection.current)
+      , 0)
+    }
+  }, [downloadSection.current])
+  React.useEffect(() => {
+    if(window.location.hash === '#contact') {
+      setTimeout(() =>
+        smoothScrollTo(contactSection.current)
+      , 0)
+    }
+  }, [contactSection.current])
+
+  const classes = useStyles({})
   return (
     <div className={classes.container}>
       <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer}}>
@@ -366,16 +433,41 @@ const LandingPage:React.FunctionComponent = () => {
         </Grid>
       </div>
       <Grid container direction='column' justify='space-between' alignItems='center'
+        innerRef={downloadSection}
         classes={{container:[classes.pageContainer, classes.footerPageContainer].join(' ')}}
       >
         <div/>
         <div className={classes.pageContainerPadding}>
           <Download/>
         </div>
-        <div className={classes.footer}>
+        <div ref={contactSection} className={classes.footerBanner}>
           <Footer/>
         </div>
       </Grid>
+      <div className={classes.footer}>
+        <div className={classes.media}>
+          <img className={classes.mediaIcon} src={PlaceIcon}/>
+          <Typography color='textSecondary'
+            variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}
+            classes={{root:classes.mediaText}}
+          >{
+            [
+              '37-1, Jalan PJS 11/7,',
+              'Bandar Sunway,',
+              '47500 Petaling Jaya,',
+              'Selangor'
+            ].join('\n')
+          }</Typography>
+        </div>
+        <div className={classes.copyright}>
+          <img className={classes.hypegienicLogo} src={HypegienicWhiteLogo}/>
+          <Typography variant='caption'
+            classes={{root:classes.copyrightText}}
+          >
+            © 2022 HYPE X GIENIC SDN. BHD.
+          </Typography>
+        </div>
+      </div>
     </div>
   )
 }
