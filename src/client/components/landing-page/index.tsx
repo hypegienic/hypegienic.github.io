@@ -1,4 +1,5 @@
 import * as React from 'react'
+import {Link} from 'react-router-dom'
 import {makeStyles} from '@material-ui/styles'
 import {Theme} from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -72,7 +73,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     }
   },
   link: {
-    color: 'inherit',
+    color: theme.palette.primary.main,
     textDecoration: 'none'
   },
   hypegienicLogo: {
@@ -152,6 +153,15 @@ const useStyles = makeStyles((theme:Theme) => ({
     borderColor: theme.palette.text.primary,
     borderWidth: '2px',
     borderStyle: 'solid'
+  },
+  unbordered: {
+    padding: '12px 16px',
+    ['& $numberText']: {
+      marginTop: '4px',
+      [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
+        marginTop: '2px'
+      }
+    }
   },
   title: {
     lineHeight: 1
@@ -308,10 +318,10 @@ const LandingPage:React.FunctionComponent = () => {
   return (
     <div className={classes.container}>
       <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer}}>
-        <Grid container direction='row' justify='flex-end'>
-          <Grid direction='column' alignItems='stretch'>
+        <Grid container direction='row' justifyContent='flex-end'>
+          <Grid>
             <img className={classes.hypegienicLogo} src={HypegienicLogo}/>
-            <Grid container direction='row' justify='flex-end' alignItems='center'>
+            <Grid container direction='row' justifyContent='flex-end' alignItems='center'>
               <Typography color='textPrimary' align='center' className={classes.multiplyLabel}>×</Typography>
               <img className={classes.hypeguardianLogo} src={HypeGuardianLogo}/>
             </Grid>
@@ -325,12 +335,12 @@ const LandingPage:React.FunctionComponent = () => {
             </div>
           </Grid>
         </Grid>
-        <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.headerContent}}>
+        <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.headerContent}}>
           <Header/>
         </Grid>
       </Grid>
       <div className={classes.darkSection}>
-        <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
+        <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
           <div className={classes.bordered}>
             <Grid container direction='row' alignItems='stretch'>
               <div className={classes.numberColumn}>
@@ -371,47 +381,70 @@ const LandingPage:React.FunctionComponent = () => {
           </div>
         </Grid>
       </div>
-      <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
-        <div className={classes.bordered}>
-          <Grid container direction='row' alignItems='stretch'>
-            <div className={classes.numberColumn}>
-              <div className={classes.titleLine}/>
-            </div>
-            <div className={classes.numberedContent}>
-              <Spinner
-                sentence='YOUR SHOES ARE SAFE WITH US'
-                color='primary'
-                variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
-                classes={{root:classes.title}}
-              />
-            </div>
-          </Grid>
-          {[
-            'Our app can only be authenticated via OTP sent to your registered device.',
-            'The hypelocker can only be unlocked when prompted by your authenticated device.',
-            'You will receive real-time updates on the progress of your order.'
-          ].map((step, index) => 
-            <Grid key={step} container direction='row' alignItems='stretch'>
+      <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
+        <div>
+          <div className={classes.bordered}>
+            <Grid container direction='row' alignItems='stretch'>
+              <div className={classes.numberColumn}>
+                <div className={classes.titleLine}/>
+              </div>
+              <div className={classes.numberedContent}>
+                <Spinner
+                  sentence='YOUR SHOES ARE SAFE WITH US'
+                  color='primary'
+                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                  classes={{root:classes.title}}
+                />
+              </div>
+            </Grid>
+            {[
+              'Our app can only be authenticated via OTP sent to your registered device.',
+              'The hypelocker can only be unlocked when prompted by your authenticated device.',
+              'You will receive real-time updates on the progress of your order.'
+            ].map((step, index) => 
+              <Grid key={step} container direction='row' alignItems='stretch'>
+                <div className={classes.numberColumn}>
+                  <Typography color='textPrimary'
+                    variant='body1'
+                    classes={{root:classes.numberText}}
+                  >
+                    0{index + 1}
+                  </Typography>
+                  <div className={classes.numberLine}/>
+                </div>
+                <div className={classes.numberedContent}>
+                  <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                    {step}
+                  </Typography>
+                </div>
+              </Grid>
+            )}
+          </div>
+          <div className={classes.unbordered}>
+            <Grid container direction='row' alignItems='stretch'>
               <div className={classes.numberColumn}>
                 <Typography color='textPrimary'
                   variant='body1'
                   classes={{root:classes.numberText}}
                 >
-                  0{index + 1}
+                  //
                 </Typography>
-                <div className={classes.numberLine}/>
               </div>
               <div className={classes.numberedContent}>
                 <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
-                  {step}
+                  Check our
+                  <Link to='/terms-and-condition' className={classes.link}>
+                    {' terms and condition '}
+                  </Link>
+                  for more details
                 </Typography>
               </div>
             </Grid>
-          )}
+          </div>
         </div>
       </Grid>
       <div className={classes.darkSection}>
-        <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
+        <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
           <div className={classes.centeredTitleContainer}>
             <Spinner
               sentence='OUR SERVICES'
@@ -432,7 +465,7 @@ const LandingPage:React.FunctionComponent = () => {
           />
         </Grid>
       </div>
-      <Grid container direction='column' justify='space-between' alignItems='center'
+      <Grid container direction='column' justifyContent='space-between' alignItems='center'
         innerRef={downloadSection}
         classes={{container:[classes.pageContainer, classes.footerPageContainer].join(' ')}}
       >

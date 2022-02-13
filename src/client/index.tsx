@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import {Theme, ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
+import {Theme, ThemeProvider, createTheme} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import Provider from './store'
@@ -8,7 +8,7 @@ import Favicon from './components/favicon'
 import Import from './components/import'
 import Router from './components'
 
-const theme:Theme = createMuiTheme({
+const theme:Theme = createTheme({
   palette: {
     type: 'light',
     text: {

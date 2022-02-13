@@ -155,7 +155,7 @@ const e404page:React.FunctionComponent = () => {
 
   return (
     <div className={classes.container}>
-      <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
+      <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
         <Typography color='textPrimary' className={classes.e404}
           {...{'data-txt':'404'}}
         >

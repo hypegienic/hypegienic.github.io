@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   },
   titleLine: {
     flex: 1,
-    width: '15px',
+    width: '19px',
     borderWidth: '2px',
     borderColor: theme.palette.primary.main,
     borderStyle: 'solid',
@@ -102,8 +102,8 @@ const useStyles = makeStyles((theme:Theme) => ({
       content: '" "',
       position: 'absolute',
       top: '0',
-      height: 'calc(100% - 4px)',
-      width: 'calc(100% - 4px)',
+      height: '100%',
+      width: '100%',
       borderWidth: '2px',
       borderColor: theme.palette.text.primary,
       borderStyle: 'solid'
@@ -263,7 +263,7 @@ const TermsConditionPage:React.FunctionComponent = () => {
   )
   return (
     <div className={classes.container}>
-      <Grid container direction='column' justify='center' alignItems='center' classes={{container:classes.pageContainer}}>
+      <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
         <div className={classes.bordered}>
           <Grid container direction='row' alignItems='stretch'>
             <div className={classes.titleColumn}>

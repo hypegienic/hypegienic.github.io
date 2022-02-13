@@ -1,12 +1,9 @@
 import * as React from 'react'
-import {RouteComponentProps} from 'react-router'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-import Async from './async'
-
-const landingPage = () => import(/* webpackChunkName:'landing' */ './landing-page')
-const termsConditionPage = () => import(/* webpackChunkName:'terms-condition' */ './terms-condition-page')
-const notFoundPage = () => import(/* webpackChunkName:'404-page' */ './404-page')
+const LandingPage = React.lazy(() => import(/* webpackChunkName:'landing' */ './landing-page'))
+const TermsConditionPage = React.lazy(() => import(/* webpackChunkName:'terms-condition' */ './terms-condition-page'))
+const NotFoundPage = React.lazy(() => import(/* webpackChunkName:'404-page' */ './404-page'))
 
 const Router:React.FunctionComponent = () => {
   React.useEffect(() => {
@@ -20,17 +17,23 @@ const Router:React.FunctionComponent = () => {
 
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path={`/`} render={(routeComponentProps:RouteComponentProps<any>) =>
-          <Async module={landingPage} props={routeComponentProps}/>
+      <Routes>
+        <Route path={`/`} element={
+          <React.Suspense fallback={null}>
+            <LandingPage/>
+          </React.Suspense>
         }/>
-        <Route exact path={`/terms-and-condition`} render={(routeComponentProps:RouteComponentProps<any>) =>
-          <Async module={termsConditionPage} props={routeComponentProps}/>
+        <Route path={`/terms-and-condition`} element={
+          <React.Suspense fallback={null}>
+            <TermsConditionPage/>
+          </React.Suspense>
         }/>
-        <Route path='*' render={(routeComponentProps:RouteComponentProps<any>) =>
-          <Async module={notFoundPage} props={routeComponentProps}/>
+        <Route path='*' element={
+          <React.Suspense fallback={null}>
+            <NotFoundPage/>
+          </React.Suspense>
         }/>
-      </Switch>
+      </Routes>
     </BrowserRouter>
   )
 }
