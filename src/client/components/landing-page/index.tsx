@@ -473,11 +473,11 @@ const LandingPage:React.FunctionComponent = () => {
         <div className={classes.pageContainerPadding}>
           <Download/>
         </div>
-        <div ref={contactSection} className={classes.footerBanner}>
+        <div className={classes.footerBanner}>
           <Footer/>
         </div>
       </Grid>
-      <div className={classes.footer}>
+      <div ref={contactSection} className={classes.footer}>
         <a className={classes.media} href='https://www.google.com/maps/place/HypeGuardian/@3.0697401,101.6001784,17z/data=!3m1!4b1!4m5!3m4!1s0x31cc4dbe5360f2c9:0xe0bbcd55f4859d9c!8m2!3d3.0697347!4d101.6023724'>
           <img className={classes.mediaIcon} src={PlaceIcon}/>
           <Typography color='textSecondary'
