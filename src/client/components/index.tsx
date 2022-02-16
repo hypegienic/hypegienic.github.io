@@ -2,7 +2,9 @@ import * as React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 const LandingPage = React.lazy(() => import(/* webpackChunkName:'landing' */ './landing-page'))
-const TermsConditionPage = React.lazy(() => import(/* webpackChunkName:'terms-condition' */ './terms-condition-page'))
+const DownloadPage = React.lazy(() => import(/* webpackChunkName:'download' */ './download-page'))
+const TermsOfUsePage = React.lazy(() => import(/* webpackChunkName:'terms-of-use' */ './terms-of-use-page'))
+const PrivacyPolicyPage = React.lazy(() => import(/* webpackChunkName:'privacy-policy' */ './privacy-policy-page'))
 const NotFoundPage = React.lazy(() => import(/* webpackChunkName:'404-page' */ './404-page'))
 
 const Router:React.FunctionComponent = () => {
@@ -23,9 +25,24 @@ const Router:React.FunctionComponent = () => {
             <LandingPage/>
           </React.Suspense>
         }/>
-        <Route path={`/terms-and-condition`} element={
+        <Route path={`/download`} element={
           <React.Suspense fallback={null}>
-            <TermsConditionPage/>
+            <DownloadPage/>
+          </React.Suspense>
+        }/>
+        {[
+          'terms-and-condition',
+          'terms-of-use'
+        ].map(path =>
+          <Route key={path} path={`/${path}`} element={
+            <React.Suspense fallback={null}>
+              <TermsOfUsePage/>
+            </React.Suspense>
+          }/>
+        )}
+        <Route path={`/privacy-policy`} element={
+          <React.Suspense fallback={null}>
+            <PrivacyPolicyPage/>
           </React.Suspense>
         }/>
         <Route path='*' element={

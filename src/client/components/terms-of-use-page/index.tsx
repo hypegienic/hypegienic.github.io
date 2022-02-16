@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     minHeight: '100vh',
     padding: '32px',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      padding: '24px',
+      padding: '16px',
     },
     ['& $bordered:not(:last-child)']: {
       borderBottom: 'none'
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   },
   titleLine: {
     flex: 1,
-    width: '19px',
+    width: '16px',
     borderWidth: '2px',
     borderColor: theme.palette.primary.main,
     borderStyle: 'solid',
@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     flexDirection: 'column',
     marginTop: '8px',
     marginBottom: '8px',
-    width: '32px',
+    width: '28px',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
       marginTop: '6px',
       marginBottom: '6px'
@@ -91,7 +91,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   unnumberedLine: {
     flex: 1,
     position: 'relative',
-    width: '19px',
+    width: '16px',
     minHeight: '2px',
     margin: '4px 0',
     overflow: 'hidden',
@@ -110,6 +110,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     }
   },
   numberText: {
+    width: '16px',
     fontFamily: 'Exan, Monaco, monospace',
     fontWeight: 600,
     marginBottom: '2px',
@@ -117,7 +118,7 @@ const useStyles = makeStyles((theme:Theme) => ({
   numberLine: {
     flex: 1,
     position: 'relative',
-    width: '19px',
+    width: '16px',
     minHeight: '2px',
     marginBottom: '6px',
     overflow: 'hidden',
@@ -140,12 +141,12 @@ const useStyles = makeStyles((theme:Theme) => ({
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '8px',
-    marginBottom: '8px',
+    marginTop: '6px',
+    marginBottom: '6px',
     overflowX: 'hidden',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      marginTop: '6px',
-      marginBottom: '6px'
+      marginTop: '4px',
+      marginBottom: '4px'
     }
   },
   table: {
@@ -162,7 +163,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     }
   }
 }))
-const TermsConditionPage:React.FunctionComponent = () => {
+const TermsOfUsePage:React.FunctionComponent = () => {
   const [{type:screenType}] = useScreenState()
   const classes = useStyles({})
 
@@ -179,7 +180,8 @@ const TermsConditionPage:React.FunctionComponent = () => {
       <Grid container direction='row' alignItems='stretch'>
         <div className={classes.titleColumn}>
           <Typography color='primary'
-            variant='body1'
+            variant='caption'
+            align='right'
             classes={{root:classes.numberText}}
           >
             {padLeft(index + 1, 2)}
@@ -207,7 +209,7 @@ const TermsConditionPage:React.FunctionComponent = () => {
                         <TableRow key={index}>
                           {row.map((data, index) =>
                             <TableCell key={index}>
-                              <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                              <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}>
                                 {data}
                               </Typography>
                             </TableCell>
@@ -224,7 +226,8 @@ const TermsConditionPage:React.FunctionComponent = () => {
                 <Grid container direction='row' alignItems='stretch'>
                   <div className={classes.numberColumn}>
                     <Typography color='textPrimary'
-                      variant='body1'
+                      variant='caption'
+                      align='right'
                       classes={{root:classes.numberText}}
                     >
                       {padLeft(index + 1, 2)}
@@ -232,7 +235,7 @@ const TermsConditionPage:React.FunctionComponent = () => {
                     <div className={classes.numberLine}/>
                   </div>
                   <div className={classes.numberedContent}>
-                    <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                    <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}>
                       {content.point}
                     </Typography>
                   </div>
@@ -242,7 +245,8 @@ const TermsConditionPage:React.FunctionComponent = () => {
                     <div className={classes.numberColumn}/>
                     <div className={classes.numberColumn}>
                       <Typography color='textPrimary'
-                        variant='body1'
+                        variant='caption'
+                        align='right'
                         classes={{root:classes.numberText}}
                       >
                         {padLeft(String.fromCharCode(97 + index), 2)}
@@ -250,7 +254,7 @@ const TermsConditionPage:React.FunctionComponent = () => {
                       <div className={classes.numberLine}/>
                     </div>
                     <div className={classes.numberedContent}>
-                      <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                      <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}>
                         {point}
                       </Typography>
                     </div>
@@ -271,7 +275,7 @@ const TermsConditionPage:React.FunctionComponent = () => {
             </div>
             <div className={classes.numberedContent}>
               <Spinner
-                sentence='TERMS AND CONDITION'
+                sentence='TERMS OF USE'
                 color='primary'
                 variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
                 classes={{root:classes.title}}
@@ -289,7 +293,7 @@ const TermsConditionPage:React.FunctionComponent = () => {
                 <div className={classes.unnumberedLine}/>
               </div>
               <div className={classes.numberedContent}>
-                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h6'}>
                   {step}
                 </Typography>
               </div>
@@ -548,4 +552,4 @@ type Section = {
   )[]
 }
 
-export default TermsConditionPage
+export default TermsOfUsePage

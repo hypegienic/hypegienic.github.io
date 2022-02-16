@@ -433,8 +433,8 @@ const LandingPage:React.FunctionComponent = () => {
               <div className={classes.numberedContent}>
                 <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
                   Check our
-                  <Link to='/terms-and-condition' className={classes.link}>
-                    {' terms and condition '}
+                  <Link to='/terms-of-use' className={classes.link}>
+                    {' terms of use '}
                   </Link>
                   for more details
                 </Typography>
