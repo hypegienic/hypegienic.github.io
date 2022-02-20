@@ -24,7 +24,7 @@ const Import:React.FunctionComponent = () => {
   return (
     <Head>
       {fonts.map(font => (
-        <link rel='preload' href={font.src} as='font'/>
+        <link rel='preload' href={font.src} as='font' crossOrigin=''/>
       ))}
     </Head>
   )

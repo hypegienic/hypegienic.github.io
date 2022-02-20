@@ -85,19 +85,19 @@ const Footer:React.FunctionComponent = () => {
       </div>
       <div className={classes.content}>
         <a className={classes.media} href='tel:+601110762614'>
-          <img className={classes.mediaIcon} src='images/phone.svg'/>
+          <img className={classes.mediaIcon} src='/images/phone.svg'/>
           <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>
            +6011-1076 2614
           </Typography>
         </a>
         <a className={classes.media} href='https://www.facebook.com/hypeguardianmy/'>
-          <img className={classes.mediaIcon} src='images/facebook.svg'/>
+          <img className={classes.mediaIcon} src='/images/facebook.svg'/>
           <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>
             hypeguardianmy
           </Typography>
         </a>
         <a className={classes.media} href='https://www.instagram.com/hypeguardianmy'>
-          <img className={classes.mediaIcon} src='images/instagram.svg'/>
+          <img className={classes.mediaIcon} src='/images/instagram.svg'/>
           <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>
             hypeguardianmy
           </Typography>

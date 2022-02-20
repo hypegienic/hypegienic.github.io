@@ -130,7 +130,7 @@ const DownloadPage:React.FunctionComponent = () => {
       </Grid>
       <div className={classes.footer}>
         <a className={classes.media} href='https://www.google.com/maps/place/HypeGuardian/@3.0697401,101.6001784,17z/data=!3m1!4b1!4m5!3m4!1s0x31cc4dbe5360f2c9:0xe0bbcd55f4859d9c!8m2!3d3.0697347!4d101.6023724'>
-          <img className={classes.mediaIcon} src='images/place.svg'/>
+          <img className={classes.mediaIcon} src='/images/place.svg'/>
           <Typography color='textSecondary'
             variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}
             classes={{root:classes.mediaText}}
@@ -144,7 +144,7 @@ const DownloadPage:React.FunctionComponent = () => {
           }</Typography>
         </a>
         <div className={classes.copyright}>
-          <img className={classes.hypegienicLogo} src='images/hypegienic-white-logo.svg'/>
+          <img className={classes.hypegienicLogo} src='/images/hypegienic-white-logo.svg'/>
           <Typography variant='caption'
             classes={{root:classes.copyrightText}}
           >

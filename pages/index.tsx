@@ -316,10 +316,10 @@ const LandingPage:React.FunctionComponent = () => {
       <Grid container direction='column' alignItems='center' classes={{container:classes.pageContainer}}>
         <Grid container direction='row' justifyContent='flex-end'>
           <Grid>
-            <img className={classes.hypegienicLogo} src='images/hypegienic-logo.svg'/>
+            <img className={classes.hypegienicLogo} src='/images/hypegienic-logo.svg'/>
             <Grid container direction='row' justifyContent='flex-end' alignItems='center'>
               <Typography color='textPrimary' align='center' className={classes.multiplyLabel}>×</Typography>
-              <img className={classes.hypeguardianLogo} src='images/hypeguardian-logo.svg'/>
+              <img className={classes.hypeguardianLogo} src='/images/hypeguardian-logo.svg'/>
             </Grid>
             <div className={classes.poweredContainer}>
               <Typography className={classes.poweredLabel}>
@@ -477,7 +477,7 @@ const LandingPage:React.FunctionComponent = () => {
       </Grid>
       <div ref={contactSection} className={classes.footer}>
         <a className={classes.media} href='https://www.google.com/maps/place/HypeGuardian/@3.0697401,101.6001784,17z/data=!3m1!4b1!4m5!3m4!1s0x31cc4dbe5360f2c9:0xe0bbcd55f4859d9c!8m2!3d3.0697347!4d101.6023724'>
-          <img className={classes.mediaIcon} src='images/place.svg'/>
+          <img className={classes.mediaIcon} src='/images/place.svg'/>
           <Typography color='textSecondary'
             variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}
             classes={{root:classes.mediaText}}
@@ -491,7 +491,7 @@ const LandingPage:React.FunctionComponent = () => {
           }</Typography>
         </a>
         <div className={classes.copyright}>
-          <img className={classes.hypegienicLogo} src='images/hypegienic-white-logo.svg'/>
+          <img className={classes.hypegienicLogo} src='/images/hypegienic-white-logo.svg'/>
           <Typography variant='caption'
             classes={{root:classes.copyrightText}}
           >

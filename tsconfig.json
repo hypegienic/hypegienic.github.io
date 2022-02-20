@@ -27,8 +27,7 @@
   },
   "include": [
     "pages/**/*",
-    "src/**/*",
-    "typings/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"

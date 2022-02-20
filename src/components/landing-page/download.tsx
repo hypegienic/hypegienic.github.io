@@ -132,8 +132,8 @@ const Download:React.FunctionComponent = () => {
         <div className={classes.background}/>
         {stripes}
         <div className={classes.flipped}>{stripes}</div>
-        <img className={classes.storeIcon} src='images/app-store.svg'/>
-        <img className={classes.storeIcon} src='images/google-play.svg'/>
+        <img className={classes.storeIcon} src='/images/app-store.svg'/>
+        <img className={classes.storeIcon} src='/images/google-play.svg'/>
       </div>
       <div className={classes.legendSection}>
         <div className={classes.legendBox}>
