@@ -358,7 +358,7 @@ const LandingPage:React.FunctionComponent = () => {
             <Grid container direction='column'>
               <div className={classes.numberedContent}>
                 <Spinner
-                  sentence='WHO IS HYPEGIENIC'
+                  sentence='WHO ARE WE'
                   color='primary'
                   variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
                   classes={{root:classes.title}}
@@ -366,10 +366,10 @@ const LandingPage:React.FunctionComponent = () => {
               </div>
               {[
                 'Hypegienic is powered by HypeGuardian to provide professional shoe care services to students all across Malaysia.',
-                "We've noticed a common problem that a lot of our customers are facing is the inconvenience to travel all the way to our physical store to deliver their shoes.",
+                'A common problem that a lot of our customers are facing is the inconvenience to travel all the way to our physical store to deliver their shoes.',
                 'Hence, hypegienic was born under the basis of providing convenience for our customers by eliminating the need to travel long distances to utilise our services.',
                 'As we set up our hypelockers in universities all across KL, our customers can enjoy 24-hour drop-in and pick-up service with zero delivery fees.'
-              ].map((step, index) => 
+              ].map(step => 
                 <div key={step} className={classes.numberedContent}>
                   <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
                     {step}
@@ -395,7 +395,7 @@ const LandingPage:React.FunctionComponent = () => {
               'All servicing will be done by HypeGuardian. Rest assured your shoes are in good hands.',
               'HypeGuardian has been the leading shoe-care provider in Malaysia since 2018.',
               'With the experience of restoring and protecting more than 20,000 pairs nationwide, the team strives to revive your beloved pairs into mint condition.'
-            ].map((step, index) =>
+            ].map(step =>
               <div key={step} className={classes.numberedContent}>
                 <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
                   {step}
