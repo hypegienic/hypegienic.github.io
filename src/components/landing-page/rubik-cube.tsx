@@ -23,7 +23,9 @@ const useStyles = makeStyles((theme:Theme) => ({
   text: {
     color: theme.palette.primary.main,
     whiteSpace: 'nowrap',
-    transition: 'transform 1800ms ease-in-out',
+    transition: theme.transitions.create('transform', {
+      duration: '1800ms'
+    })
   },
   alternate: {
     '&$text': {

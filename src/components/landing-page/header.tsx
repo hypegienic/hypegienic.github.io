@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {makeStyles} from '@material-ui/styles'
-import {Theme} from '@material-ui/core/styles'
+import {Theme, useTheme} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import ResizeObserver from 'resize-observer-polyfill'
 
@@ -379,6 +379,7 @@ const Header:React.FunctionComponent = () => {
 
   const {tagline, placeholder, placeholderHeight} = state
   const classes = useStyles({})
+  const theme = useTheme()
   const renderShufflingLetters = (texts:ShufflingText[]) =>
     texts.reduce((letters, letter) => {
       const previousLetter = letters.slice(-1)[0]
@@ -425,7 +426,7 @@ const Header:React.FunctionComponent = () => {
             </div>
             <div style={{
               height: placeholderHeight.primary,
-              transition: 'height 300ms ease-in-out'
+              transition: theme.transitions.create('height')
             }}/>
           </div>
           <div className={classes.content}>
@@ -443,7 +444,7 @@ const Header:React.FunctionComponent = () => {
             </div>
             <div className={classes.secondaryTagLineBackground} style={{
               height: placeholderHeight.secondary + 4,
-              transition: 'height 300ms ease-in-out'
+              transition: theme.transitions.create('height')
             }}/>
           </div>
         </div>

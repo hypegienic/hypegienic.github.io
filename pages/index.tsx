@@ -281,6 +281,23 @@ const useStyles = makeStyles((theme:Theme) => ({
   },
   copyrightText: {
     color: 'rgb(118, 121, 128)'
+  },
+  documents: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    padding: '12px 16px 24px',
+  },
+  document: {
+    padding: '3px 8px',
+    margin: '0 4px',
+    textDecoration: 'none',
+    borderRadius: '4px',
+    transition: theme.transitions.create('background-color'),
+    '&:hover': {
+      backgroundColor: 'rgb(118, 121, 128)'
+    }
   }
 }))
 const LandingPage:React.FunctionComponent = () => {
@@ -334,6 +351,59 @@ const LandingPage:React.FunctionComponent = () => {
         <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.headerContent}}>
           <Header/>
         </Grid>
+      </Grid>
+      <div className={classes.darkSection}>
+        <Grid container direction='row' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
+          <div className={classes.bordered}>
+            <Grid container direction='column'>
+              <div className={classes.numberedContent}>
+                <Spinner
+                  sentence='WHO IS HYPEGIENIC'
+                  color='primary'
+                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                  classes={{root:classes.title}}
+                />
+              </div>
+              {[
+                'Hypegienic is powered by HypeGuardian to provide professional shoe care services to students all across Malaysia.',
+                "We've noticed a common problem that a lot of our customers are facing is the inconvenience to travel all the way to our physical store to deliver their shoes.",
+                'Hence, hypegienic was born under the basis of providing convenience for our customers by eliminating the need to travel long distances to utilise our services.',
+                'As we set up our hypelockers in universities all across KL, our customers can enjoy 24-hour drop-in and pick-up service with zero delivery fees.'
+              ].map((step, index) => 
+                <div key={step} className={classes.numberedContent}>
+                  <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                    {step}
+                  </Typography>
+                </div>
+              )}
+            </Grid>
+          </div>
+        </Grid>
+      </div>
+      <Grid container direction='row' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
+        <div className={classes.bordered}>
+          <Grid container direction='column'>
+            <div className={classes.numberedContent}>
+              <Spinner
+                sentence='POWERED BY HYPEGUARDIAN'
+                color='primary'
+                variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                classes={{root:classes.title}}
+              />
+            </div>
+            {[
+              'All servicing will be done by HypeGuardian. Rest assured your shoes are in good hands.',
+              'HypeGuardian has been the leading shoe-care provider in Malaysia since 2018.',
+              'With the experience of restoring and protecting more than 20,000 pairs nationwide, the team strives to revive your beloved pairs into mint condition.'
+            ].map((step, index) =>
+              <div key={step} className={classes.numberedContent}>
+                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                  {step}
+                </Typography>
+              </div>
+            )}
+          </Grid>
+        </div>
       </Grid>
       <div className={classes.darkSection}>
         <Grid container direction='column' justifyContent='center' alignItems='center' classes={{container:classes.pageContainer}}>
@@ -497,6 +567,22 @@ const LandingPage:React.FunctionComponent = () => {
           >
             © 2022 HYPE X GIENIC SDN. BHD.
           </Typography>
+        </div>
+        <div className={classes.documents}>
+          <Link href='/terms-of-use'>
+            <a className={classes.document}>
+              <Typography variant='body1' color='textSecondary'>
+                TERMS OF USE
+              </Typography>
+            </a>
+          </Link>
+          <Link href='/privacy-policy'>
+            <a className={classes.document}>
+              <Typography variant='body1' color='textSecondary'>
+                PRIVACY POLICY
+              </Typography>
+            </a>
+          </Link>
         </div>
       </div>
     </div>

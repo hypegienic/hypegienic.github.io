@@ -17,7 +17,9 @@ const useStyles = makeStyles((theme:Theme) => ({
     position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
-    transition: 'top 600ms',
+    transition: theme.transitions.create('top', {
+      duration: '600ms'
+    }),
     pointerEvents: 'none'
   }
 }))
