@@ -1,10 +1,13 @@
 import * as React from 'react'
+import {useRouter} from 'next/router'
 import {makeStyles} from '@material-ui/styles'
 import {Theme} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
 import {useScreenState} from '../../stores/screen'
 
+const appStoreLink = 'https://apps.apple.com/my/app/hy-pe-gienic/id1608786953'
+const playStoreLink = 'https://play.google.com/store/apps/details?id=app.hypegienic'
 const useStyles = makeStyles((theme:Theme) => ({
   container: {
     width: '100%',
@@ -83,26 +86,27 @@ const useStyles = makeStyles((theme:Theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     padding: '12px 24px'
   },
   legendBox: {
     position: 'relative',
-    width: '16px',
-    height: '16px',
-    border: `2px solid ${theme.palette.text.primary}`,
-    margin: '1px 6px',
+    width: '15px',
+    height: '15px',
+    border: `1.5px solid ${theme.palette.text.primary}`,
+    margin: '1.5px 6px',
     overflow: 'hidden',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
       width: '12px',
       height: '12px',
-      borderWidth: '1px'
+      borderWidth: '1px',
+      margin: '3px 6px'
     }
   },
   legendBoxStroke: {
     position: 'absolute',
     width: '200%',
-    height: '2px',
+    height: '1.5px',
     left: '-50%',
     top: '50%',
     backgroundColor: theme.palette.text.primary,
@@ -110,13 +114,28 @@ const useStyles = makeStyles((theme:Theme) => ({
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
       height: '1px'
     }
-  },
-  legendText: {
-    whiteSpace: 'pre'
   }
 }))
 const Download:React.FunctionComponent = () => {
+  const router = useRouter()
   const [{type:screenType}] = useScreenState()
+
+  React.useEffect(() => {
+    const pathname = router.pathname
+    const userAgent = navigator.userAgent.toLowerCase()
+    if(pathname === '/download') {
+      if(userAgent.includes('android')) {
+        window.open(playStoreLink)
+      }
+      if(
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+      ) {
+        window.open(appStoreLink)
+      }
+    }
+  }, [])
+
   const classes = useStyles({})
   const stripes = <>
     <div className={classes.stripe} style={{animation:'none'}}/>
@@ -132,8 +151,12 @@ const Download:React.FunctionComponent = () => {
         <div className={classes.background}/>
         {stripes}
         <div className={classes.flipped}>{stripes}</div>
-        <img className={classes.storeIcon} src='/images/app-store.svg'/>
-        <img className={classes.storeIcon} src='/images/google-play.svg'/>
+        <a href={appStoreLink}>
+          <img className={classes.storeIcon} src='/images/app-store.svg'/>
+        </a>
+        <a href={playStoreLink}>
+          <img className={classes.storeIcon} src='/images/google-play.svg'/>
+        </a>
       </div>
       <div className={classes.legendSection}>
         <div className={classes.legendBox}>
@@ -141,10 +164,9 @@ const Download:React.FunctionComponent = () => {
         </div>
         <Typography color='textPrimary'
           variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}
-          classes={{root:classes.legendText}}
-        >{
-          'COMING SOON'
-        }</Typography>
+        >
+          DOWNLOAD APP TO GET STARTED
+        </Typography>
       </div>
     </div>
   )

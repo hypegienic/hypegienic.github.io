@@ -12,7 +12,6 @@ import TableCell from '@material-ui/core/TableCell'
 import {useScreenState} from '../src/stores/screen'
 import Spinner from '../src/components/landing-page/spinner'
 
-
 const useStyles = makeStyles((theme:Theme) => ({
   container: {
     width: '100vw',
