@@ -84,10 +84,10 @@ const Footer:React.FunctionComponent = () => {
         <div className={[classes.stripeBackground, classes.flipped].join(' ')}/>
       </div>
       <div className={classes.content}>
-        <a className={classes.media} href='tel:+601110762614'>
+        <a className={classes.media} href='tel:+601126142614'>
           <img className={classes.mediaIcon} src='/images/phone.svg'/>
           <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'caption':'body1'}>
-           +6011-1076 2614
+           +6011-2614 2614
           </Typography>
         </a>
         <a className={classes.media} href='https://www.facebook.com/hypeguardianmy/'>
