@@ -126,7 +126,7 @@ const useStyles = makeStyles((theme:Theme) => ({
     color: 'rgb(255, 255, 255)',
     padding: '2px 2px 0',
     [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-      fontSize: '9px'
+      fontSize: '12px'
     }
   },
   multiplyLabel: {
@@ -360,7 +360,7 @@ const LandingPage:React.FunctionComponent = () => {
                 <Spinner
                   sentence='WHO ARE WE'
                   color='primary'
-                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h4'}
                   classes={{root:classes.title}}
                 />
               </div>
@@ -371,7 +371,7 @@ const LandingPage:React.FunctionComponent = () => {
                 'As we set up our hypelockers in universities all across KL, our customers can enjoy 24-hour drop-in and pick-up service with zero delivery fees.'
               ].map(step => 
                 <div key={step} className={classes.numberedContent}>
-                  <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                  <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h5'}>
                     {step}
                   </Typography>
                 </div>
@@ -387,7 +387,7 @@ const LandingPage:React.FunctionComponent = () => {
               <Spinner
                 sentence='POWERED BY HYPEGUARDIAN'
                 color='primary'
-                variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h4'}
                 classes={{root:classes.title}}
               />
             </div>
@@ -397,7 +397,7 @@ const LandingPage:React.FunctionComponent = () => {
               'With the experience of restoring and protecting more than 20,000 pairs nationwide, the team strives to revive your beloved pairs into mint condition.'
             ].map(step =>
               <div key={step} className={classes.numberedContent}>
-                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h5'}>
                   {step}
                 </Typography>
               </div>
@@ -416,7 +416,7 @@ const LandingPage:React.FunctionComponent = () => {
                 <Spinner
                   sentence='GET STARTED'
                   color='primary'
-                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h4'}
                   classes={{root:classes.title}}
                 />
               </div>
@@ -438,7 +438,7 @@ const LandingPage:React.FunctionComponent = () => {
                   <div className={classes.numberLine}/>
                 </div>
                 <div className={classes.numberedContent}>
-                  <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                  <Typography color='textSecondary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h5'}>
                     {step}
                   </Typography>
                 </div>
@@ -458,7 +458,7 @@ const LandingPage:React.FunctionComponent = () => {
                 <Spinner
                   sentence='YOUR SHOES ARE SAFE WITH US'
                   color='primary'
-                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
+                  variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h4'}
                   classes={{root:classes.title}}
                 />
               </div>
@@ -479,7 +479,7 @@ const LandingPage:React.FunctionComponent = () => {
                   <div className={classes.numberLine}/>
                 </div>
                 <div className={classes.numberedContent}>
-                  <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                  <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h5'}>
                     {step}
                   </Typography>
                 </div>
@@ -497,7 +497,7 @@ const LandingPage:React.FunctionComponent = () => {
                 </Typography>
               </div>
               <div className={classes.numberedContent}>
-                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h6':'h5'}>
+                <Typography color='textPrimary' variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'body1':'h5'}>
                   Check our
                   <Link href='/terms-of-use'>
                     <a className={classes.link}>
@@ -523,7 +523,7 @@ const LandingPage:React.FunctionComponent = () => {
             />
           </div>
           <RubikCube
-            variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h4':'h3'}
+            variant={['xs-phone', 'sm-tablet'].includes(screenType)? 'h5':'h4'}
             words={[
               'CLEANING',
               'PROTECTION',

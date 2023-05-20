@@ -111,9 +111,9 @@ const useStyles = makeStyles((theme:Theme) => {
     },
     tagLineText: {
       fontWeight: 800,
-      fontSize: '44px',
+      fontSize: '42px',
       [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-        fontSize: '32px'
+        fontSize: '28px'
       }
     },
     secondaryTagLineContainer: {
@@ -123,9 +123,9 @@ const useStyles = makeStyles((theme:Theme) => {
     secondaryTagLineText: {
       textAlign: 'right',
       fontWeight: 600,
-      fontSize: '28px',
+      fontSize: '24px',
       [`@media (max-width:${theme.breakpoints.values.sm}px)`]: {
-        fontSize: '21px'
+        fontSize: '18px'
       }
     },
     secondaryTagLineBackground: {
