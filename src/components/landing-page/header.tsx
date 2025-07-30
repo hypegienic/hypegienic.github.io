@@ -357,12 +357,14 @@ const Header:React.FunctionComponent = () => {
   }, [state.active])
   const useObserver = (ref:React.MutableRefObject<any>, onChange:(rect:any) => void) => 
     React.useEffect(() => {
+      if(!ref.current) return
+      const element = ref.current
       const resizeObserver = new ResizeObserver(([entry]) => {
         if(entry) onChange(entry.contentRect)
       })
-      resizeObserver.observe(ref.current)
+      resizeObserver.observe(element)
       return () =>
-        resizeObserver.unobserve(ref.current)
+        resizeObserver.unobserve(element)
     }, [ref.current])
   useObserver(primaryContainerRef, rect =>
     setState((state) => ({...state, placeholderHeight: {
